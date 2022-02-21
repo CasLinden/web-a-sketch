@@ -125,8 +125,9 @@ function moveDown(){
     let currentCell = document.querySelector('.selected');
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
-    let nextCell = document.querySelector(`#cell${+idString+columns}`)
-    toggleSelected(nextCell)
+    if(+idString+(+columns)>0){return};
+    let nextCell = document.querySelector(`#cell${+idString+columns}`);
+    toggleSelected(nextCell);
 }
 
 
@@ -155,5 +156,3 @@ function addMyClickListeners() {
     };
 
 addMyClickListeners()
-
-//git working?

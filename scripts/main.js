@@ -8,7 +8,7 @@ function makeDiv(widthInPixels, heightInPixels, parentNode, divClass, divId) {
     parentNode.appendChild(newDiv);
    }
 
-makeDiv(1000, 500, body, 'grid container');
+makeDiv(1000, 750, body, 'grid container');
 const gridContainer = document.querySelector('.grid');
 
 
@@ -23,9 +23,9 @@ function fillContainer (divsPerRow, divsPerColumn, whichContainer, divClass, div
        }
    }
 
-fillContainer(100, 50, gridContainer, 'oneCell', 'cell') //the grid is now 10 by 10
+fillContainer(100, 75, gridContainer, 'oneCell', 'cell') //the grid is now 10 by 10
 let columns = 100; // don't forget to change this somehow if the grid changes
-let rows = 50; 
+let rows = 75; 
 
 
 
@@ -125,7 +125,7 @@ function moveDown(){
     let currentCell = document.querySelector('.selected');
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
-    if(+idString+(+columns)>0){return};
+    if(+idString+(+columns)> (rows*columns)){return};
     let nextCell = document.querySelector(`#cell${+idString+columns}`);
     toggleSelected(nextCell);
 }

@@ -197,14 +197,9 @@ function addResetButton () {
    
 addResetButton()
 
-function lmao(){
-const knob = document.querySelector('#right-knob')
-console.log(knob)
-knob.addEventListener('click', e => {
-northWest();
-});
-}
-lmao();
+
+
 //to do: 
-// diagonal movement?
+// diagonal movement, multiple keydown? https://www.gavsblog.com/blog/detect-single-and-multiple-keypress-events-javascript
+// add a nice transition for .selected, show where the snake is at
 // change grid size without crashing?

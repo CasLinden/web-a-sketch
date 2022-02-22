@@ -47,25 +47,6 @@ styleAllCells('white', '1px solid lightgrey');
 
 
 
-
-// function addButtons(){
-//     makeDiv(500, 100, body, 'controlsContainer container')
-//     let controlsContainer = document.querySelector('.controlsContainer');
-//     fillContainer(4, 1, controlsContainer, 'controls', 'controls')
-  
-//    let left = document.querySelector('#controls1');
-//    let right = document.querySelector('#controls2');
-//    let up = document.querySelector('#controls3');
-//    let down= document.querySelector('#controls4');
-//    left.textContent = '←';
-//    right.textContent = '→';
-//    up.textContent = '↑';
-//    down.textContent = '↓';
-// }
-// addButtons()
-
-
-
 function deselectAll() {
     const cells = document.querySelectorAll('.oneCell');
     for(let i = 0; i < cells.length; i++){
@@ -137,34 +118,33 @@ function moveDown(){
 
 
 
-// function addMyClickListeners() {
-//     let left = document.querySelector('#controls1');
-//     let right = document.querySelector('#controls2');
-//     let up = document.querySelector('#controls3');
-//     let down= document.querySelector('#controls4');
+function addMyClickListeners() {
+    let left = document.querySelector('#arrow-left');
+    let right = document.querySelector('#arrow-right');
+    let up = document.querySelector('#arrow-up');
+    let down= document.querySelector('#arrow-down');
 
-//     left.addEventListener('click',  e => {
-//         moveLeft()
-//         });
+    left.addEventListener('click',  e => {
+        moveLeft()
+        });
  
-//     right.addEventListener('click',  e => {
-//         moveRight()
-//         });
+    right.addEventListener('click',  e => {
+        moveRight()
+        });
     
-//     up.addEventListener('click',  e => {
-//         moveUp()
-//         });    
+    up.addEventListener('click',  e => {
+        moveUp()
+        });    
 
-//     down.addEventListener('click',  e => {
-//         moveDown()
-//         });
-//     };
+    down.addEventListener('click',  e => {
+        moveDown()
+        });
+    };
 
-// addMyClickListeners()
+addMyClickListeners()
 
 
 //to do: 
-// nice looking buttons above knobs -> +working event listeners
 // arrow keys/wasd functionality
 // diagonal movement?
 // change grid size without crashing?

@@ -161,3 +161,10 @@ function moveDown(){
 //     };
 
 // addMyClickListeners()
+
+
+//to do: 
+// nice looking buttons above knobs -> +working event listeners
+// arrow keys/wasd functionality
+// diagonal movement?
+// change grid size without crashing?

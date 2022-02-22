@@ -6,24 +6,84 @@ html {
     box-sizing: border-box;
 }
 
-#controls1,
-#controls2,
-#controls3,
-#controls4 {
-    background: steelblue;
-    border: 2px solid black;
-    color: white;
-    font-size: 20px;
+@font-face {
+    font-family: superScr;
+    src: url(../fonts/SUPERSCR.TTF);
+}
+
+h1 {
+    font-family: superScr;
+    font-size: 60px;
+    margin-left: 30px;
+    color: #d1a221;
+}
+
+h2 {
+    font-family: superScr;
+    margin-top: 75px;
+    margin-left: 20px;
+    color: #d1a221;
+}
+
+
+#web-a-sketch {
+    width: 1300px;
+    height: 1050px;
+    background-color: red;
+    border-radius: 10px;
     display: flex;
+    flex-direction: column;
+}
+
+#top{
+    height: 125px;
     justify-content: center;
-    align-items: center;
+}
+
+#middle{
+    height: 750px;
+}
+
+#bottom{
+    height:175px; 
+    justify-content: space-between;
+}
+
+.knob {
+    height: 150px;
+    width: 150px;
+    background-color: white;
+    border-radius: 50%;
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+
+#left{
+    width: 150px;
+}
+
+#center{
+    width: 1000px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#right{
+    width: 150px;
+
 }
 
 .container {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* this is for the grid*/
 }
 
-.selected {
-    border: 3px solid steelblue;
+.row {
+    display:flex;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
 }

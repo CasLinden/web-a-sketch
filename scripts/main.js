@@ -1,4 +1,6 @@
 const body = document.querySelector('body');
+const webASketch = document.querySelector('#web-a-sketch');
+const center = document.querySelector('#center')
 
 function makeDiv(widthInPixels, heightInPixels, parentNode, divClass, divId) {
     let newDiv = document.createElement('div');
@@ -8,8 +10,10 @@ function makeDiv(widthInPixels, heightInPixels, parentNode, divClass, divId) {
     parentNode.appendChild(newDiv);
    }
 
-makeDiv(1000, 750, body, 'grid container');
+makeDiv(1000, 750, center, 'grid container');
 const gridContainer = document.querySelector('.grid');
+gridContainer.style.background = 'white';
+
 
 
 
@@ -23,9 +27,10 @@ function fillContainer (divsPerRow, divsPerColumn, whichContainer, divClass, div
        }
    }
 
-fillContainer(100, 75, gridContainer, 'oneCell', 'cell') //the grid is now 10 by 10
-let columns = 100; // don't forget to change this somehow if the grid changes
+fillContainer(100, 75, gridContainer, 'oneCell', 'cell')
+let columns = 100; // don't forget to change these globals when changing grid size
 let rows = 75; 
+
 
 
 
@@ -43,21 +48,21 @@ styleAllCells('white', '1px solid lightgrey');
 
 
 
-function addButtons(){
-    makeDiv(500, 100, body, 'controlsContainer container')
-    let controlsContainer = document.querySelector('.controlsContainer');
-    fillContainer(4, 1, controlsContainer, 'controls', 'controls')
+// function addButtons(){
+//     makeDiv(500, 100, body, 'controlsContainer container')
+//     let controlsContainer = document.querySelector('.controlsContainer');
+//     fillContainer(4, 1, controlsContainer, 'controls', 'controls')
   
-   let left = document.querySelector('#controls1');
-   let right = document.querySelector('#controls2');
-   let up = document.querySelector('#controls3');
-   let down= document.querySelector('#controls4');
-   left.textContent = '<';
-   right.textContent = '>';
-   up.textContent = '^';
-   down.textContent = '↓';
-}
-addButtons()
+//    let left = document.querySelector('#controls1');
+//    let right = document.querySelector('#controls2');
+//    let up = document.querySelector('#controls3');
+//    let down= document.querySelector('#controls4');
+//    left.textContent = '←';
+//    right.textContent = '→';
+//    up.textContent = '↑';
+//    down.textContent = '↓';
+// }
+// addButtons()
 
 
 
@@ -132,27 +137,27 @@ function moveDown(){
 
 
 
-function addMyClickListeners() {
-    let left = document.querySelector('#controls1');
-    let right = document.querySelector('#controls2');
-    let up = document.querySelector('#controls3');
-    let down= document.querySelector('#controls4');
+// function addMyClickListeners() {
+//     let left = document.querySelector('#controls1');
+//     let right = document.querySelector('#controls2');
+//     let up = document.querySelector('#controls3');
+//     let down= document.querySelector('#controls4');
 
-    left.addEventListener('click',  e => {
-        moveLeft()
-        });
+//     left.addEventListener('click',  e => {
+//         moveLeft()
+//         });
  
-    right.addEventListener('click',  e => {
-        moveRight()
-        });
+//     right.addEventListener('click',  e => {
+//         moveRight()
+//         });
     
-    up.addEventListener('click',  e => {
-        moveUp()
-        });    
+//     up.addEventListener('click',  e => {
+//         moveUp()
+//         });    
 
-    down.addEventListener('click',  e => {
-        moveDown()
-        });
-    };
+//     down.addEventListener('click',  e => {
+//         moveDown()
+//         });
+//     };
 
-addMyClickListeners()
+// addMyClickListeners()

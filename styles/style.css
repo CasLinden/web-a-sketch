@@ -58,6 +58,17 @@ h2 {
     margin: 0px 10px 0px 10px;
 }
 
+#reset{
+    background-color: #d1a221;
+    align-items: center;
+    justify-content: center;
+    height:40px;
+    width: 100px;
+    font-family: superScr;
+    color: white;
+    font-size: 30px;
+}
+
 #left{
     width: 150px;
 }

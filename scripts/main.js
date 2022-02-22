@@ -16,7 +16,6 @@ gridContainer.style.background = 'white';
 
 
 
-
 function fillContainer (divsPerRow, divsPerColumn, whichContainer, divClass, divId) {
     let divsTotal = divsPerRow * divsPerColumn;
     let containerWidth = whichContainer.offsetWidth
@@ -30,8 +29,6 @@ function fillContainer (divsPerRow, divsPerColumn, whichContainer, divClass, div
 fillContainer(100, 75, gridContainer, 'oneCell', 'cell')
 let columns = 100; // don't forget to change these globals when changing grid size
 let rows = 75; 
-
-
 
 
 
@@ -53,6 +50,7 @@ function deselectAll() {
     cells[i].classList.remove('selected')    
     }
 }
+
 
 
 function selectStartingCell() {
@@ -78,24 +76,21 @@ function toggleSelected (nextCell) {
 
 
 function moveRight(){
-
     let currentCell = document.querySelector('.selected');
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
-    if(idString % columns != 0) {
+    if(idString % columns == 0){return};
     let nextCell = document.querySelector(`#cell${+idString+1}`)
     toggleSelected(nextCell)
-    }
 }
 
 function moveLeft(){
     let currentCell = document.querySelector('.selected');
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
-    if(idString % columns != 1) {
+    if(idString % columns == 1) {return}
     let nextCell = document.querySelector(`#cell${+idString-1}`)
     toggleSelected(nextCell)
-    }
 }
 
 function moveUp(){
@@ -116,7 +111,41 @@ function moveDown(){
     toggleSelected(nextCell);
 }
 
+function northEast(){
+    let currentCell = document.querySelector('.selected');
+    let currentId = currentCell.getAttribute('id');
+    let idString = currentId.slice(4);
+    if(idString-columns < 0 || idString % columns == 0) {return};
+    let nextCell = document.querySelector(`#cell${+idString-(columns-1)}`);
+    toggleSelected(nextCell);
+}
 
+function southEast(){
+    let currentCell = document.querySelector('.selected');
+    let currentId = currentCell.getAttribute('id');
+    let idString = currentId.slice(4);
+    if(+idString+(+columns)> (rows*columns) || idString % columns == 0) {return};
+    let nextCell = document.querySelector(`#cell${+idString+(columns+1)}`);
+    toggleSelected(nextCell);
+}
+
+function southWest(){
+    let currentCell = document.querySelector('.selected');
+    let currentId = currentCell.getAttribute('id');
+    let idString = currentId.slice(4);
+    if(+idString+(+columns)> (rows*columns) || idString % columns == 1) {return};
+    let nextCell = document.querySelector(`#cell${+idString+(columns-1)}`);
+    toggleSelected(nextCell);
+}
+
+function northWest(){
+    let currentCell = document.querySelector('.selected');
+    let currentId = currentCell.getAttribute('id');
+    let idString = currentId.slice(4);
+    if(idString-columns < 0 || idString % columns == 1) {return};
+    let nextCell = document.querySelector(`#cell${+idString-(columns+1)}`);
+    toggleSelected(nextCell);
+}
 
 function addMyClickListeners() {
     let left = document.querySelector('#arrow-left');
@@ -159,7 +188,23 @@ window.addEventListener('keydown', e =>{
 
 addKeyboardListerers();
 
+function addResetButton () {
+    resetButton = document.querySelector('#reset');
+    resetButton.addEventListener('click', e => {
+    styleAllCells('white');
+    });
+   }
+   
+addResetButton()
 
+function lmao(){
+const knob = document.querySelector('#right-knob')
+console.log(knob)
+knob.addEventListener('click', e => {
+northWest();
+});
+}
+lmao();
 //to do: 
 // diagonal movement?
 // change grid size without crashing?

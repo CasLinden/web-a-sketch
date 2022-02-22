@@ -125,26 +125,41 @@ function addMyClickListeners() {
     let down= document.querySelector('#arrow-down');
 
     left.addEventListener('click',  e => {
-        moveLeft()
+        moveLeft();
         });
  
     right.addEventListener('click',  e => {
-        moveRight()
+        moveRight();
         });
     
     up.addEventListener('click',  e => {
-        moveUp()
+        moveUp();
         });    
 
     down.addEventListener('click',  e => {
-        moveDown()
+        moveDown();
         });
     };
 
-addMyClickListeners()
+addMyClickListeners();
+
+function addKeyboardListerers (){
+window.addEventListener('keydown', e =>{
+    if(e.code === "ArrowUp" || e.code === "KeyW"){
+    moveUp();
+    }if(e.code === "ArrowDown" || e.code === "KeyS"){
+    moveDown();
+    }if(e.code === "ArrowRight" || e.code === "KeyD"){
+    moveRight();
+    }if(e.code === "ArrowLeft" || e.code === "KeyA"){
+    moveLeft();
+    }else {return};
+});
+}
+
+addKeyboardListerers();
 
 
 //to do: 
-// arrow keys/wasd functionality
 // diagonal movement?
 // change grid size without crashing?

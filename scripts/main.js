@@ -172,21 +172,59 @@ function addMyClickListeners() {
 
 addMyClickListeners();
 
-function addKeyboardListerers (){
-window.addEventListener('keydown', e =>{
-    if(e.code === "ArrowUp" || e.code === "KeyW"){
+function addKeyboardListerersDiagonal (){
+const keysPressed = {};
+window.addEventListener('keydown', e => {
+keysPressed[e.key] = true;
+
+
+if (keysPressed['ArrowUp'] && e.code == 'ArrowRight' || keysPressed['ArrowRight'] && e.code == 'ArrowUp'){
+    northEast();
+    
+}if (keysPressed['ArrowUp'] && e.code == 'ArrowLeft' || keysPressed['ArrowLeft'] && e.code == 'ArrowUp'){
+    northWest();
+    
+}if (keysPressed['ArrowDown'] && e.code == 'ArrowRight' || keysPressed['ArrowRight'] && e.code == 'ArrowDown'){
+    southEast();
+    
+}if (keysPressed['ArrowDown'] && e.code == 'ArrowLeft' || keysPressed['ArrowLeft'] && e.code == 'ArrowDown'){
+    southWest();
+    
+}
+
+});
+window.addEventListener('keyup', e => {
+delete keysPressed[e.key];
+});
+}
+addKeyboardListerersDiagonal();
+
+
+function addKeyboardListeners(){
+const keysPressed = {};
+window.addEventListener('keydown', e => {
+keysPressed[e.key] = true;
+let numberPressed = Object.keys(keysPressed).length
+console.log(numberPressed)
+
+    if(numberPressed == 1 && e.code === "ArrowUp" || e.code === "KeyW"){
     moveUp();
-    }if(e.code === "ArrowDown" || e.code === "KeyS"){
+    }if(numberPressed == 1 && e.code === "ArrowDown" || e.code === "KeyS"){
     moveDown();
-    }if(e.code === "ArrowRight" || e.code === "KeyD"){
+    }if(numberPressed == 1 && e.code === "ArrowRight" || e.code === "KeyD"){
     moveRight();
-    }if(e.code === "ArrowLeft" || e.code === "KeyA"){
+    }if(numberPressed == 1 && e.code === "ArrowLeft" || e.code === "KeyA"){
     moveLeft();
     }else {return};
 });
+window.addEventListener('keyup', e => {
+delete keysPressed[e.key];
+});
 }
+addKeyboardListeners();
 
-addKeyboardListerers();
+
+
 
 function addResetButton () {
     resetButton = document.querySelector('#reset');
@@ -200,6 +238,6 @@ addResetButton()
 
 
 //to do: 
-// diagonal movement, multiple keydown? https://www.gavsblog.com/blog/detect-single-and-multiple-keypress-events-javascript
 // add a nice transition for .selected, show where the snake is at
 // change grid size without crashing?
+// can I prevent coloring unwanted squre before multiple key presses kick in with a slight delay?

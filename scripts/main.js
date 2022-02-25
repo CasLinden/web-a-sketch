@@ -26,9 +26,9 @@ function fillContainer (divsPerRow, divsPerColumn, whichContainer, divClass, div
        }
    }
 
-fillContainer(100, 75, gridContainer, 'oneCell', 'cell')
-let columns = 100; // don't forget to change these globals when changing grid size
-let rows = 75; 
+fillContainer(120, 90, gridContainer, 'oneCell', 'cell')
+let columns = 120; // don't forget to change these globals when changing grid size
+let rows = 90; 
 
 
 
@@ -38,19 +38,21 @@ function styleAllCells(cellColor, cellBorder) {
     for(let i = 0; i < cells.length; i++){
        cells[i].style.background = cellColor;
        cells[i].style.border = cellBorder;
-       }
-   }
-styleAllCells('white', '1px solid lightgrey');
+    }
+
+}
+
+   styleAllCells('white', '1px solid lightgrey');
 
 
 
 function deselectAll() {
     const cells = document.querySelectorAll('.oneCell');
     for(let i = 0; i < cells.length; i++){
-    cells[i].classList.remove('selected')    
+    cells[i].classList.remove('selected')
+    cells[i].style.transform = 'scale(1)' 
     }
 }
-
 
 
 function selectStartingCell() {
@@ -62,8 +64,8 @@ function selectStartingCell() {
        cells[i].classList.toggle('selected');
        cells[i].style.background = 'black';
        }
-       }
-   }
+    }
+}
 selectStartingCell();
 
 
@@ -72,79 +74,88 @@ function toggleSelected (nextCell) {
     deselectAll();
     nextCell.classList.toggle('selected');
     nextCell.style.background = 'black';
+    nextCell.style.transform = 'scale(1.15)'
 }
 
 
 function moveRight(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(idString % columns == 0){return};
     let nextCell = document.querySelector(`#cell${+idString+1}`)
-    toggleSelected(nextCell)
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function moveLeft(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(idString % columns == 1) {return}
     let nextCell = document.querySelector(`#cell${+idString-1}`)
-    toggleSelected(nextCell)
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function moveUp(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(idString-columns < 0){return};
     let nextCell = document.querySelector(`#cell${+idString-columns}`)
-    toggleSelected(nextCell)
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function moveDown(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(+idString+(+columns)> (rows*columns)){return};
     let nextCell = document.querySelector(`#cell${+idString+columns}`);
-    toggleSelected(nextCell);
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function northEast(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(idString-columns < 0 || idString % columns == 0) {return};
     let nextCell = document.querySelector(`#cell${+idString-(columns-1)}`);
-    toggleSelected(nextCell);
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function southEast(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(+idString+(+columns)> (rows*columns) || idString % columns == 0) {return};
     let nextCell = document.querySelector(`#cell${+idString+(columns+1)}`);
-    toggleSelected(nextCell);
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function southWest(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(+idString+(+columns)> (rows*columns) || idString % columns == 1) {return};
     let nextCell = document.querySelector(`#cell${+idString+(columns-1)}`);
-    toggleSelected(nextCell);
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function northWest(){
     let currentCell = document.querySelector('.selected');
+    currentCell.style.background = "black";
     let currentId = currentCell.getAttribute('id');
     let idString = currentId.slice(4);
     if(idString-columns < 0 || idString % columns == 1) {return};
     let nextCell = document.querySelector(`#cell${+idString-(columns+1)}`);
-    toggleSelected(nextCell);
+    setTimeout (toggleSelected, 60, nextCell);
 }
 
 function addMyClickListeners() {
@@ -238,6 +249,5 @@ addResetButton()
 
 
 //to do: 
-// add a nice transition for .selected, show where the snake is at
-// change grid size without crashing?
 // can I prevent coloring unwanted squre before multiple key presses kick in with a slight delay?
+// adjust diagonal functions to split divs and create a straight line

@@ -26,9 +26,9 @@ function fillContainer (divsPerRow, divsPerColumn, whichContainer, divClass, div
        }
    }
 
-fillContainer(120, 90, gridContainer, 'oneCell', 'cell')
-let columns = 120; // don't forget to change these globals when changing grid size
-let rows = 90; 
+fillContainer(100, 75, gridContainer, 'oneCell', 'cell')
+let columns = 100; // don't forget to change these globals when changing grid size
+let rows = 75; 
 
 
 
@@ -85,7 +85,7 @@ function moveRight(){
     let idString = currentId.slice(4);
     if(idString % columns == 0){return};
     let nextCell = document.querySelector(`#cell${+idString+1}`)
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function moveLeft(){
@@ -95,7 +95,7 @@ function moveLeft(){
     let idString = currentId.slice(4);
     if(idString % columns == 1) {return}
     let nextCell = document.querySelector(`#cell${+idString-1}`)
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function moveUp(){
@@ -105,7 +105,7 @@ function moveUp(){
     let idString = currentId.slice(4);
     if(idString-columns < 0){return};
     let nextCell = document.querySelector(`#cell${+idString-columns}`)
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function moveDown(){
@@ -115,7 +115,7 @@ function moveDown(){
     let idString = currentId.slice(4);
     if(+idString+(+columns)> (rows*columns)){return};
     let nextCell = document.querySelector(`#cell${+idString+columns}`);
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function northEast(){
@@ -125,7 +125,7 @@ function northEast(){
     let idString = currentId.slice(4);
     if(idString-columns < 0 || idString % columns == 0) {return};
     let nextCell = document.querySelector(`#cell${+idString-(columns-1)}`);
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function southEast(){
@@ -135,7 +135,7 @@ function southEast(){
     let idString = currentId.slice(4);
     if(+idString+(+columns)> (rows*columns) || idString % columns == 0) {return};
     let nextCell = document.querySelector(`#cell${+idString+(columns+1)}`);
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function southWest(){
@@ -145,7 +145,7 @@ function southWest(){
     let idString = currentId.slice(4);
     if(+idString+(+columns)> (rows*columns) || idString % columns == 1) {return};
     let nextCell = document.querySelector(`#cell${+idString+(columns-1)}`);
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function northWest(){
@@ -155,7 +155,7 @@ function northWest(){
     let idString = currentId.slice(4);
     if(idString-columns < 0 || idString % columns == 1) {return};
     let nextCell = document.querySelector(`#cell${+idString-(columns+1)}`);
-    setTimeout (toggleSelected, 60, nextCell);
+    toggleSelected(nextCell)
 }
 
 function addMyClickListeners() {
